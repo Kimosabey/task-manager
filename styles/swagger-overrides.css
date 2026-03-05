@@ -1,0 +1,56 @@
+:root {
+  --swagger-bg: #faf8f5;
+  --swagger-panel: #f2ede4;
+  --swagger-ink: #1a1714;
+  --swagger-muted: #3d3830;
+  --swagger-accent: #d4622a;
+}
+
+.swagger-ui {
+  color: var(--swagger-ink);
+}
+
+.swagger-ui .wrapper {
+  padding: 24px 16px;
+}
+
+.swagger-ui,
+.swagger-ui .scheme-container,
+.swagger-ui .info,
+.swagger-ui .opblock,
+.swagger-ui .opblock .opblock-section-header,
+.swagger-ui .responses-wrapper,
+.swagger-ui .model-box {
+  background: var(--swagger-bg) !important;
+}
+
+.swagger-ui .opblock {
+  border: 1px solid rgba(26, 23, 20, 0.12) !important;
+  box-shadow: none !important;
+}
+
+.swagger-ui .opblock-tag {
+  border-bottom: 1px solid rgba(26, 23, 20, 0.12) !important;
+}
+
+.swagger-ui .opblock .opblock-section-header {
+  border-bottom: 1px solid rgba(26, 23, 20, 0.08) !important;
+}
+
+.swagger-ui .btn {
+  background: var(--swagger-accent) !important;
+  border: none !important;
+  color: var(--swagger-bg) !important;
+}
+
+.swagger-ui input[type='text'],
+.swagger-ui input[type='email'],
+.swagger-ui input[type='password'],
+.swagger-ui textarea {
+  background: var(--swagger-panel) !important;
+  border-color: rgba(26, 23, 20, 0.16) !important;
+}
+
+.swagger-ui .info a {
+  color: var(--swagger-accent) !important;
+}

@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #faf8f5; /* sand-50 */
+  --fg: #1a1714; /* ink-900 */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1a1714; /* ink-900 */
+    --fg: #faf8f5; /* sand-50 */
+  }
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  color: var(--fg);
+  background: var(--bg);
+}
+
+/* Lenis owns all smooth scrolling. Do not add scroll-behavior: smooth. */
+
+.parallax-bg,
+.parallax-mid {
+  will-change: transform;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
