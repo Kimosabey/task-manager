@@ -1,7 +1,5 @@
 {
-  "functions": {
-    "app/api/**": {
-      "includeFiles": "**"
-    }
-  }
+  "buildCommand": "next build && echo '{\"version\":1,\"success\":true,\"outDirectory\":\".next\"}' > .next/export-detail.json",
+  "outputDirectory": ".next",
+  "framework": "nextjs"
 }
