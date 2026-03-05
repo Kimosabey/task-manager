@@ -1,5 +1,4 @@
 {
-  "buildCommand": "next build && echo '{\"version\":1,\"success\":true,\"outDirectory\":\".next\"}' > .next/export-detail.json",
-  "outputDirectory": ".next",
+  "buildCommand": "next build && node -e \"require('fs').writeFileSync('.next/export-detail.json', JSON.stringify({version:1,success:true,outDirectory:'.next'}))\"",
   "framework": "nextjs"
 }
