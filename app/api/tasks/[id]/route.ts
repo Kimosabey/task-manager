@@ -25,13 +25,15 @@ export const runtime = 'nodejs'
  *       404:
  *         description: Not found
  */
-export async function GET(_req: Request, { params }: { params: { id: string } }) {
+export async function GET(_req: Request, { params }: { params: Promise<{ id: string }> }) {
   const session = await getServerSession(authOptions)
   if (!session) return new Response('Unauthorized', { status: 401 })
 
+  const { id } = await params
+
   await connectToMongoDB()
 
-  const task = await Task.findById(params.id)
+  const task = await Task.findById(id)
     .populate('assignee', 'name email role avatar')
     .populate('createdBy', 'name email role avatar')
 
@@ -75,9 +77,11 @@ export async function GET(_req: Request, { params }: { params: { id: string } })
  *       404:
  *         description: Not found
  */
-export async function PUT(req: Request, { params }: { params: { id: string } }) {
+export async function PUT(req: Request, { params }: { params: Promise<{ id: string }> }) {
   const session = await getServerSession(authOptions)
   if (!session) return new Response('Unauthorized', { status: 401 })
+
+  const { id } = await params
 
   const body = (await req.json().catch(() => null)) as
     | {
@@ -113,7 +117,7 @@ export async function PUT(req: Request, { params }: { params: { id: string } }) 
 
   await connectToMongoDB()
 
-  const task = await Task.findByIdAndUpdate(params.id, update, { new: true })
+  const task = await Task.findByIdAndUpdate(id, update, { new: true })
     .populate('assignee', 'name email role avatar')
     .populate('createdBy', 'name email role avatar')
 
@@ -141,13 +145,15 @@ export async function PUT(req: Request, { params }: { params: { id: string } }) 
  *       403:
  *         description: Forbidden
  */
-export async function DELETE(_req: Request, { params }: { params: { id: string } }) {
+export async function DELETE(_req: Request, { params }: { params: Promise<{ id: string }> }) {
   const session = await getServerSession(authOptions)
   if (!session) return new Response('Unauthorized', { status: 401 })
   if (session.user.role !== 'admin') return new Response('Forbidden', { status: 403 })
 
+  const { id } = await params
+
   await connectToMongoDB()
 
-  await Task.findByIdAndDelete(params.id)
+  await Task.findByIdAndDelete(id)
   return new Response(null, { status: 204 })
 }
