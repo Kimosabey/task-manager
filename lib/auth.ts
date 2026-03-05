@@ -8,6 +8,8 @@ import { User } from '@/models/User'
 export const sessionMaxAgeSeconds = 7 * 24 * 60 * 60
 
 export const authOptions: NextAuthOptions = {
+  secret: process.env.NEXTAUTH_SECRET,
+  useSecureCookies: process.env.NODE_ENV === 'production',
   session: {
     strategy: 'jwt',
     maxAge: sessionMaxAgeSeconds,

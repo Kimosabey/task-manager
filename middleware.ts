@@ -8,7 +8,12 @@ export async function middleware(req: NextRequest) {
   if (pathname.startsWith('/login')) return NextResponse.next()
   if (pathname.startsWith('/api/auth')) return NextResponse.next()
 
-  const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET })
+  const secret = process.env.NEXTAUTH_SECRET
+  const token = await getToken({
+    req,
+    ...(secret ? { secret } : {}),
+    secureCookie: process.env.NODE_ENV === 'production',
+  })
 
   if (!token) {
     const url = new URL('/login', req.url)
