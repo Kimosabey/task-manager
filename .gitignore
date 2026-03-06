@@ -13,6 +13,10 @@
 /.next/
 /out/
 
+
+# swagger (generated at build time)
+/public/swagger.json
+
 # production
 /build
 

@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { signIn } from 'next-auth/react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useState } from 'react'
@@ -105,7 +106,10 @@ export function LoginClient() {
                 </form>
 
                 <div className="mt-5 text-xs text-ink-700">
-                  Need an account? Use <code className="rounded bg-sand-100 px-1">POST /api/auth/register</code>.
+                  New here?{' '}
+                  <Link href="/register" className="font-medium text-ember-500 hover:underline">
+                    Create an account
+                  </Link>
                 </div>
               </div>
             </div>
