@@ -1,12 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    outputFileTracingExcludes: {
-      '*': [
-        '.next/cache/**',
-        'node_modules/@swc/**',
-      ],
-    },
+  outputFileTracingExcludes: {
+    '*': [
+      '.next/cache/**',
+      'node_modules/@swc/**',
+    ],
   },
 };
 
